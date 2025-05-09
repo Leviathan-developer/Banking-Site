@@ -8,7 +8,6 @@ import axios from "axios"
 import Server_Ip from '../config';
 
 function SignUp() {
-  const [checkboxState1, setCheckbox1] = useState(false);
   const [checkboxState2, setCheckbox2] = useState(false);
   const [showPassword, setShowPassword] = useState(false); 
   const [Name, setName] = useState('')
@@ -43,7 +42,6 @@ function handleSignUp() {
 }
   
 
-  const handleCheckbox1 = () => setCheckbox1(!checkboxState1);
   const handleCheckbox2 = () => setCheckbox2(!checkboxState2);
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
@@ -71,15 +69,6 @@ function handleSignUp() {
           </div>
         </div>
         <div className="checkboxgroups">
-          <label className="check">
-            <input
-              type='checkbox'
-              className='notthisone'
-              checked={checkboxState1}
-              onChange={handleCheckbox1}
-            />
-            <span className='condition'>I would like to receive order updates via text</span>
-          </label>
           <label className="check">
             <div className="sad">
               <input
