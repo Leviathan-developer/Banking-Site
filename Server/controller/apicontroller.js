@@ -70,33 +70,37 @@ const register = async (req, res) => {
   console.log("Got request for register");
   const { email, name, password } = req.body;
 
-    try {
-      const [emails] = await pool.query("SELECT COUNT(*) AS emailCount FROM bank WHERE email = ?", [email]);
-    
-      if(emails[0].emailCount > 0){
-        return res.status(400).json({
-          status: "error",
-          message: "This email is already registered. Please use a different email address."
-        });
-      }
-      
-      const hashedPassword = await bcrypt.hash(password, 10);
+  if (!email || !name || !password) {
+    return res.status(400).json({ error: "All fields (email, name, password) are required" });
+  }
 
-      const [result] = await pool.query(
-        "INSERT INTO bank (email,name,password,balance) VALUES (?,?,?,?)",
-        [email, name, hashedPassword, 100000]
-      );
+  try {
+    const [emails] = await pool.query("SELECT COUNT(*) AS emailCount FROM bank WHERE email = ?", [email]);
 
-      res.status(201).json({
-        status: "success",
-        message: "Registration successful!",
-        user: { email, name } 
+    if (emails[0].emailCount > 0) {
+      return res.status(400).json({
+        status: "error",
+        message: "This email is already registered. Please use a different email address."
       });
-    } catch (err) {
-      console.log("Error", err);
-      res.status(500).json({ error: "Server error" });
     }
-  };
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const [result] = await pool.query(
+      "INSERT INTO bank (email, name, password, balance) VALUES (?, ?, ?, ?)",
+      [email, name, hashedPassword, 100000]
+    );
+
+    res.status(201).json({
+      status: "success",
+      message: "Registration successful!",
+      user: { email, name }
+    });
+  } catch (err) {
+    console.log("Error", err);
+    res.status(500).json({ error: "Server error" });
+  }
+};
 
 const transferFunds = async (req, res) => {
   const { senderid, senderpass, amount, receiverAccount } = req.body;

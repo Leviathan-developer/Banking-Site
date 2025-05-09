@@ -24,14 +24,19 @@ function SignUp() {
     setName(e.target.value);
   };
 function handleSignUp() {
-  if (Name !== '' || Email !== '' || Password !== '') {
+  if (Name === '' || Email === '' || Password === '') {
     alert('Please complete the form');
-  }
+    return;
+  }  
   if (!checkboxState2) {
     alert('You need to agree terms to use');
   } else {
-    axios.post(`${Server_Ip}/register`, { name: Name, pass: Password, email: Email })
-      .then(response => {
+      axios.post(`${Server_Ip}/register`, {
+        name: Name,
+        email: Email,
+        password: Password
+      })
+          .then(response => {
         alert("Registration successful!");
         navigate('/dashboard');
       })
