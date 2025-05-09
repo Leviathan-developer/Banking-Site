@@ -1,0 +1,59 @@
+.dashboard {
+    width: 90%;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 32px;
+    color: #3b82f6;
+    margin-bottom: 20px;
+  }
+  
+  .user-info {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #334155;
+  }
+  
+  .transaction-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  
+  .transaction-list li {
+    background-color: #f1f5f9;
+    margin: 10px 0;
+    padding: 15px 20px;
+    border-left: 5px solid #3b82f6;
+    border-radius: 10px;
+    color: #475569;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+  }
+  
+  button.transfer-btn {
+    display: block;
+    width: 220px;
+    margin: 30px auto 0;
+    padding: 12px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+  }
+  
+  button.transfer-btn:hover {
+    background-color: #2563eb;
+  }
+  

@@ -1,0 +1,85 @@
+
+🏦 Local Database Setup Guide
+
+To run this project locally, follow these steps to set up the MySQL database:
+
+✅ Prerequisites
+
+- MySQL installed (e.g., MariaDB or MySQL 8+)
+- Node.js installed
+
+Copy commands between ```sql and ```
+
+---
+
+📁 1. Database Configuration
+
+Create a database named:
+
+```sql
+CREATE DATABASE banking;
+USE banking;
+```
+
+---
+
+📄 2. Create Required Tables
+
+#### **`bank` Table**
+```sql
+CREATE TABLE bank (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  name VARCHAR(100),
+  account_number BIGINT(20) NOT NULL UNIQUE DEFAULT (FLOOR(RAND() * 9000000000) + 1000000000),
+  password VARCHAR(255),
+  balance DECIMAL(10,2),
+  user_type ENUM('admin','staff','user') DEFAULT 'user',
+  email VARCHAR(255) UNIQUE,
+  PRIMARY KEY (id)
+);
+```
+
+#### **`transactions` Table**
+```sql
+CREATE TABLE transactions (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  sender_id INT(11),
+  receiver_account BIGINT(20),
+  amount DECIMAL(10,2),
+  date TIMESTAMP DEFAULT current_timestamp(),
+  PRIMARY KEY (id),
+  FOREIGN KEY (sender_id) REFERENCES bank(id)
+);
+```
+
+---
+
+⚙️ 3. `.env` File Setup
+
+Create a `.env` file in the root of your backend project with the following content:
+
+```env
+MYSQL_HOST=127.0.0.1
+MYSQL_USER=root
+MYSQL_PASSWORD=bank@123
+MYSQL_DATABASE=banking
+```
+
+> 🔒 These are default credentials. You can change them, but make sure to update `.env` too.
+
+---
+
+🚀 4. Run the Backend
+
+Make sure you install dependencies and then start the server:
+
+```bash
+npm install
+node server.js
+```
+
+---
+
+🧪 Test It
+
+If everything went smooth now we can run server and client and use banking site thankyou

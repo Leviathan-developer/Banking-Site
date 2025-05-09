@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(to right, #3b82f6, #1e3a8a);
+  }
+  
+  .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .innerbox {
+    background-color: white;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    min-width: 350px;
+    width: 90%;
+    max-width: 400px;
+  }
+  
+  .title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #1e3a8a;
+    margin-bottom: 20px;
+  }
+  
+  .loginput {
+    padding: 12px 16px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    width: 100%;
+    font-size: 16px;
+    transition: border 0.2s ease-in-out;
+  }
+  
+  .loginput:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  }
+  
+  .signin {
+    margin-top: 20px;
+    padding: 12px 0;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #1e3a8a;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .signin:hover {
+    background-color: #3b82f6;
+  }
+  
+  .register {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #4b5563;
+  }
+  
+  .registertext {
+    color: #1e3a8a;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .registertext:hover {
+    text-decoration: underline;
+  }
+  
